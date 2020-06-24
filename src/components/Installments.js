@@ -6,11 +6,11 @@ export default function Installments(props) {
             <div className="row" style={{ border: "1px solid #dedede", marginRight: "1px" }}>
                 <div className="col s3">{props.parcela}</div>
                 <div className="col s9">
-                    <span>{props.total}</span>
+                    <span style={{color: props.color}}>{props.total}</span>
                     <br />
-                    <span>{props.rendimento}</span>
+                    <span style={{color: props.color}}>{props.rendimento}</span>
                     <br />
-                    <span>{props.taxa}</span>
+                    <span style={{color: props.color}}>{props.taxa}</span>
                 </div>
             </div>
         </div>

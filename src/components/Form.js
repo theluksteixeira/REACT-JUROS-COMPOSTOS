@@ -5,31 +5,28 @@ export default function Form(props) {
     const [jurosMensal, setJurosMensal] = useState(0);
     const [periodo, setPeriodo] = useState(0);
 
-    const jurosCompostos = (valorInicial, taxa, tempo) => {
-        const P = valorInicial;
-        const i = taxa;
-        const n = tempo;
-        return (P * (1 + i)) ^ n;
-    };
-
     const handleCalcMontante = (event) => {
         setMontante(event.target.value);
-        props.total(jurosCompostos(montante, jurosMensal, periodo));
-        props.taxa("0,50");
-        props.parcela(3);
-        props.rendimento("5,00");
+        props.montantePai(event.target.value);
+        props.jurosMensalPai(jurosMensal);
+        props.periodoPai(periodo);
         return;
     };
 
     const handleCalcTaxa = (event) => {
         setJurosMensal(event.target.value);
-        props.total(jurosCompostos(montante, jurosMensal, periodo));
+        props.montantePai(montante);
+        props.jurosMensalPai(event.target.value);
+        props.periodoPai(periodo);
         return;
     };
 
     const handleCalcPeriodo = (event) => {
         setPeriodo(event.target.value);
-        return jurosCompostos(montante, jurosMensal, periodo);
+        props.montantePai(montante);
+        props.jurosMensalPai(jurosMensal);
+        props.periodoPai(event.target.value);
+        return;
     };
 
     return (
